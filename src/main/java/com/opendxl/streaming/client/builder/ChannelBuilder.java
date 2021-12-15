@@ -78,6 +78,11 @@ public class ChannelBuilder {
     private HttpProxySettings httpProxySettings;
 
     /**
+     * Flag that is set to true if the consumer group and topics to read are Multitenant. Default value is true
+     */
+    private boolean multiTenant;
+
+    /**
      * <p>Constructor for {@link ChannelBuilder}</p>
      *
      * <p>Its parameters are mandatory parameters to create a {@link Channel} instance.
@@ -91,6 +96,7 @@ public class ChannelBuilder {
         this.base = base;
         this.auth = auth;
         this.consumerGroup = consumerGroup;
+        this.multiTenant = true;
     }
 
     /**
@@ -192,6 +198,20 @@ public class ChannelBuilder {
     }
 
     /**
+     * <p>
+     * Set the multiTenant value to be used at {@link ChannelBuilder#build()} when creating {@link Channel} instance
+     * </p>
+     *
+     * @param multiTenant If the table is multi tenant this parameter should be true otherwise false.
+     * Default value if true.
+     * @return this {@link ChannelBuilder} instance
+     */
+    public ChannelBuilder withMultiTenant(final boolean multiTenant) {
+        this.multiTenant = multiTenant;
+        return this;
+    }
+
+    /**
      * <p>Build a {@link Channel} object using the previously set parameters.</p>
      *
      * @return a {@link Channel} object which can consume records from subscribed topics and also produce records to
@@ -200,7 +220,7 @@ public class ChannelBuilder {
      */
     public Channel build() throws TemporaryError {
         return new Channel(base, auth, consumerGroup, pathPrefix, consumerPathPrefix, producerPathPrefix, retryOnFail,
-                verifyCertBundle, extraConfigs, httpProxySettings);
+                verifyCertBundle, extraConfigs, httpProxySettings, multiTenant);
     }
 
 }

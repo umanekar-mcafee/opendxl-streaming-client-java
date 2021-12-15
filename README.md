@@ -51,7 +51,7 @@ Maven:
 <dependency>
   <groupId>com.opendxl</groupId>
   <artifactId>dxlstreamingclient</artifactId>
-  <version>0.1.2</version>
+  <version>0.1.3</version>
 </dependency>
 ```
 or Gradle:
