@@ -55,7 +55,7 @@ Maven:
 </dependency>
 
 or Gradle:
-compile 'com.opendxl:dxlstreamingclient:0.1.2'
+compile 'com.opendxl:dxlstreamingclient:0.1.3'
 
 Bugs and Feedback
 -----------------
